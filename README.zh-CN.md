@@ -225,7 +225,3 @@ ruff check src tests
 ## 贡献
 
 欢迎 PR——新密码、更准的置信度、更好的 GUI、新 flag 格式都行。改动较大的话建议先开 Issue 聊一下。
-
-## 许可证
-
-MIT
