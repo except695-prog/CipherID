@@ -1,0 +1,73 @@
+[build-system]
+requires = ["hatchling>=1.18"]
+build-backend = "hatchling.build"
+
+[project]
+name = "cipherid"
+version = "0.3.0"
+description = "One-click cipher/encoding identifier, decoder & encoder for CTFs."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "CipherID contributors" }]
+requires-python = ">=3.10"
+keywords = ["ctf", "cipher", "encoding", "cryptography", "decoder", "identifier", "ciphey"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: X11 Applications :: Qt",
+    "Environment :: Win32 (MS Windows)",
+    "Intended Audience :: Information Technology",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Topic :: Security :: Cryptography",
+    "Topic :: Utilities",
+]
+dependencies = [
+    "PySide6>=6.6",
+    "click>=8.1",
+    "Pillow>=10.0",
+    "pyzbar>=0.1.9",
+    "pytesseract>=0.3.10",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4",
+    "pytest-cov>=4.1",
+    "ruff>=0.1",
+    "pyinstaller>=6.3",
+    "qrcode>=7.4",
+]
+
+[project.scripts]
+cipherid = "cipherid.cli:main"
+
+[project.gui-scripts]
+cipherid-gui = "cipherid.gui.app:main"
+
+[project.urls]
+Homepage = "https://github.com/except695-prog/CipherID"
+Repository = "https://github.com/except695-prog/CipherID"
+Issues = "https://github.com/except695-prog/CipherID/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/cipherid"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "N"]
+ignore = ["E501", "N802", "N806"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+ignore_missing_imports = true
+check_untyped_defs = false
